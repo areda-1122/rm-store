@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R&M Store | مستحضرات التجميل والعناية والإكسسوارات</title>
+  <meta name="description" content="R&M Store متجر متخصص في مستحضرات التجميل والعناية بالبشرة والشعر والإكسسوارات.">
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- شريط الإعلان العلوي -->
+  <div class="top-bar">
+    شحن لجميع المحافظات | اطلبي الآن عبر واتساب
+  </div>
+
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="container header-inner">
+
+      <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+
+      <a href="index.html" class="logo-link" aria-label="R&M Store">
+        <img src="logo.png" alt="R&M Store" class="logo-img">
+      </a>
+
+      <div class="header-icons">
+        <a href="favorites.html" class="icon-btn" aria-label="المفضلة">
+          ♡
+          <span class="badge" id="favCount">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn" aria-label="السلة">
+          🛍
+          <span class="badge" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- مربع البحث -->
+    <div class="container search-wrap">
+      <form class="search-form" id="searchForm">
+        <input type="search" id="searchInput" placeholder="ابحثي عن منتج أو علامة تجارية..." autocomplete="off">
+        <button type="submit" class="search-btn">بحث</button>
+      </form>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- قائمة التنقل -->
+    <nav class="main-nav" id="mainNav">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="products.html?category=skin">العناية بالبشرة</a></li>
+          <li><a href="products.html?category=hair">العناية بالشعر</a></li>
+          <li><a href="products.html?category=makeup">المكياج</a></li>
+          <li><a href="products.html?category=personal">العناية الشخصية</a></li>
+          <li><a href="products.html?category=accessories">الإكسسوارات</a></li>
+          <li><a href="products.html?category=offers" class="nav-offers">العروض والخصومات</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- بانر العروض -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <span class="hero-tag">عروض وخصومات</span>
+          <h1>جمالك يبدأ من هنا</h1>
+          <p>اكتشفي أفضل مستحضرات التجميل ومنتجات العناية والإكسسوارات بأسعار مميزة.</p>
+          <a href="products.html?category=offers" class="btn btn-dark">تسوقي العروض</a>
+        </div>
+        <div class="hero-image">
+          <img src="logo.png" alt="R&M Store">
+        </div>
+      </div>
+    </section>
+
+    <!-- أقسام المتجر -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">أقسام المتجر</h2>
+        <div class="categories-grid">
+          <a href="products.html?category=skin" class="category-card">
+            <span class="category-icon">✨</span>
+            <span class="category-name">العناية بالبشرة</span>
+          </a>
+          <a href="products.html?category=hair" class="category-card">
+            <span class="category-icon">💆‍♀️</span>
+            <span class="category-name">العناية بالشعر</span>
+          </a>
+          <a href="products.html?category=makeup" class="category-card">
+            <span class="category-icon">💄</span>
+            <span class="category-name">المكياج</span>
+          </a>
+          <a href="products.html?category=personal" class="category-card">
+            <span class="category-icon">🌸</span>
+            <span class="category-name">العناية الشخصية</span>
+          </a>
+          <a href="products.html?category=accessories" class="category-card">
+            <span class="category-icon">🎀</span>
+            <span class="category-name">الإكسسوارات</span>
+          </a>
+          <a href="products.html?category=offers" class="category-card category-offers">
+            <span class="category-icon">🏷</span>
+            <span class="category-name">العروض والخصومات</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- المنتجات المميزة -->
+    <section class="section section-beige">
+      <div class="container">
+        <h2 class="section-title">المنتجات المميزة</h2>
+        <div class="products-grid" id="featuredProducts">
+          <p class="loading-text">جاري تحميل المنتجات...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- أحدث المنتجات -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">أحدث المنتجات</h2>
+        <div class="products-grid" id="latestProducts">
+          <p class="loading-text">جاري تحميل المنتجات...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الأكثر مبيعًا -->
+    <section class="section section-beige">
+      <div class="container">
+        <h2 class="section-title">الأكثر مبيعًا</h2>
+        <div class="products-grid" id="bestSellers">
+          <p class="loading-text">جاري تحميل المنتجات...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- تواصل معنا -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="section-title">تواصل معنا</h2>
+        <div class="contact-box">
+          <p>يسعدنا خدمتك والرد على استفساراتك في أي وقت.</p>
+          <div class="contact-buttons">
+            <a href="https://wa.me/201010031279" target="_blank" rel="noopener" class="btn btn-dark">راسلينا على واتساب</a>
+            <a href="https://chat.whatsapp.com/KtMSRAFE5x90rwMH2Jc2mx?s=cl&p=i&mlu=0" target="_blank" rel="noopener" class="btn btn-outline">انضمي لجروب واتساب</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <img src="logo.png" alt="R&M Store" class="footer-logo">
+        <p>متجر متخصص في مستحضرات التجميل والعناية والإكسسوارات.</p>
+      </div>
+      <div class="footer-col">
+        <h3>روابط سريعة</h3>
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="cart.html">السلة</a></li>
+          <li><a href="favorites.html">المفضلة</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>بيانات المتجر</h3>
+        <ul>
+          <li>واتساب: <a href="https://wa.me/201010031279" target="_blank" rel="noopener" dir="ltr">01010031279</a></li>
+          <li>العملة: جنيه مصري</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>جميع الحقوق محفوظة © R&M Store</p>
+    </div>
+  </footer>
+
+  <!-- ملفات الجافاسكريبت (هننشئها في الخطوات الجاية) -->
+  <script src="js/app.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
