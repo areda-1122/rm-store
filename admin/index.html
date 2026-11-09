@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة | R&M Store</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ========== شاشة تسجيل الدخول ========== -->
+  <section class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <img src="../logo.png" alt="R&M Store" class="login-logo">
+      <h1>لوحة الإدارة</h1>
+      <p class="login-sub">سجّلي الدخول للمتابعة</p>
+
+      <form id="loginForm" novalidate>
+        <label class="field">
+          <span>البريد الإلكتروني</span>
+          <input type="email" id="loginEmail" dir="ltr" autocomplete="username" required>
+        </label>
+        <label class="field">
+          <span>كلمة السر</span>
+          <input type="password" id="loginPass" dir="ltr" autocomplete="current-password" required>
+        </label>
+        <p class="form-error" id="loginError" role="alert" hidden></p>
+        <button type="submit" class="btn btn-dark btn-block" id="loginBtn">دخول</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== اللوحة ========== -->
+  <div class="admin-app" id="adminApp" hidden>
+
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <div class="admin-brand">
+          <img src="../logo.png" alt="R&M Store">
+          <strong>لوحة الإدارة</strong>
+        </div>
+        <div class="admin-header-actions">
+          <a href="../index.html" target="_blank" rel="noopener" class="btn btn-small btn-outline">عرض المتجر</a>
+          <button type="button" class="btn btn-small btn-dark" id="logoutBtn">خروج</button>
+        </div>
+      </div>
+      <nav class="admin-tabs" id="adminTabs">
+        <button type="button" class="tab active" data-tab="dashboard">الإحصائيات</button>
+        <button type="button" class="tab" data-tab="products">المنتجات</button>
+        <button type="button" class="tab" data-tab="categories">الأقسام</button>
+        <button type="button" class="tab" data-tab="orders">الطلبات</button>
+        <button type="button" class="tab" data-tab="customers">العملاء</button>
+      </nav>
+    </header>
+
+    <main class="admin-main">
+
+      <!-- ===== الإحصائيات ===== -->
+      <section class="panel" id="panel-dashboard">
+        <h2 class="panel-title">الإحصائيات</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-label">عدد الطلبات</span>
+            <strong class="stat-value" id="statOrders">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">طلبات جديدة</span>
+            <strong class="stat-value" id="statNew">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">إجمالي المبيعات</span>
+            <strong class="stat-value" id="statSales">0</strong>
+            <small class="stat-note">بدون الطلبات الملغية</small>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">عدد المنتجات</span>
+            <strong class="stat-value" id="statProducts">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== المنتجات ===== -->
+      <section class="panel" id="panel-products" hidden>
+        <div class="panel-head">
+          <h2 class="panel-title">المنتجات</h2>
+          <button type="button" class="btn btn-small btn-dark" id="addProductBtn">+ إضافة منتج</button>
+        </div>
+        <div class="list" id="productsList">
+          <p class="loading-text">جاري التحميل...</p>
+        </div>
+      </section>
+
+      <!-- ===== الأقسام ===== -->
+      <section class="panel" id="panel-categories" hidden>
+        <div class="panel-head">
+          <h2 class="panel-title">الأقسام</h2>
+          <button type="button" class="btn btn-small btn-dark" id="addCategoryBtn">+ إضافة قسم</button>
+        </div>
+        <div class="list" id="categoriesList">
+          <p class="loading-text">جاري التحميل...</p>
+        </div>
+      </section>
+
+      <!-- ===== الطلبات ===== -->
+      <section class="panel" id="panel-orders" hidden>
+        <div class="panel-head">
+          <h2 class="panel-title">الطلبات</h2>
+          <select id="orderFilter" class="filter-select" aria-label="تصفية الطلبات">
+            <option value="all">كل الطلبات</option>
+            <option value="new">جديد</option>
+            <option value="confirmed">تم التأكيد</option>
+            <option value="shipped">تم الشحن</option>
+            <option value="delivered">تم التسليم</option>
+            <option value="cancelled">ملغي</option>
+          </select>
+        </div>
+        <div class="list" id="ordersList">
+          <p class="loading-text">جاري التحميل...</p>
+        </div>
+      </section>
+
+      <!-- ===== العملاء ===== -->
+      <section class="panel" id="panel-customers" hidden>
+        <h2 class="panel-title">بيانات العملاء</h2>
+        <div class="list" id="customersList">
+          <p class="loading-text">جاري التحميل...</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ========== نافذة إضافة / تعديل منتج ========== -->
+  <div class="modal" id="productModal" hidden>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="productModalTitle">إضافة منتج</h3>
+        <button type="button" class="modal-close" data-close="productModal" aria-label="إغلاق">✕</button>
+      </div>
+
+      <form id="productForm" novalidate>
+        <label class="field">
+          <span>اسم المنتج *</span>
+          <input type="text" id="pName" maxlength="150" required>
+        </label>
+
+        <label class="field">
+          <span>العلامة التجارية</span>
+          <input type="text" id="pBrand" maxlength="80">
+        </label>
+
+        <label class="field">
+          <span>القسم *</span>
+          <select id="pCategory" required></select>
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>السعر الحالي (ج.م) *</span>
+            <input type="number" id="pPrice" min="0" step="0.01" inputmode="decimal" dir="ltr" required>
+          </label>
+          <label class="field">
+            <span>السعر القديم (عند الخصم)</span>
+            <input type="number" id="pOldPrice" min="0" step="0.01" inputmode="decimal" dir="ltr">
+          </label>
+        </div>
+
+        <label class="field">
+          <span>الوصف</span>
+          <textarea id="pDesc" rows="4" maxlength="2000"></textarea>
+        </label>
+
+        <div class="field">
+          <span>صورة المنتج</span>
+          <div class="image-box">
+            <img id="pImagePreview" src="../logo.png" alt="معاينة الصورة">
+            <input type="file" id="pImageFile" accept="image/jpeg,image/png,image/webp">
+          </div>
+          <small class="hint">الحد الأقصى 5 ميجا. الأنواع المسموحة: JPG أو PNG أو WEBP.</small>
+        </div>
+
+        <div class="checks">
+          <label class="check"><input type="checkbox" id="pInStock" checked> متوفر</label>
+          <label class="check"><input type="checkbox" id="pFeatured"> منتج مميز</label>
+          <label class="check"><input type="checkbox" id="pBest"> الأكثر مبيعًا</label>
+          <label class="check"><input type="checkbox" id="pOffer"> ضمن العروض</label>
+        </div>
+
+        <p class="form-error" id="productError" role="alert" hidden></p>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-dark" id="productSaveBtn">حفظ</button>
+          <button type="button" class="btn btn-outline" data-close="productModal">إلغاء</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== نافذة إضافة / تعديل قسم ========== -->
+  <div class="modal" id="categoryModal" hidden>
+    <div class="modal-box modal-small">
+      <div class="modal-head">
+        <h3 id="categoryModalTitle">إضافة قسم</h3>
+        <button type="button" class="modal-close" data-close="categoryModal" aria-label="إغلاق">✕</button>
+      </div>
+
+      <form id="categoryForm" novalidate>
+        <label class="field">
+          <span>اسم القسم *</span>
+          <input type="text" id="cName" maxlength="60" required>
+        </label>
+
+        <label class="field">
+          <span>الرمز بالإنجليزي (بدون مسافات) *</span>
+          <input type="text" id="cSlug" maxlength="40" dir="ltr" placeholder="مثال: perfume" required>
+          <small class="hint">حروف إنجليزية صغيرة وأرقام وشرطة فقط. لا يمكن تغييره بعد الإنشاء.</small>
+        </label>
+
+        <label class="field">
+          <span>الترتيب</span>
+          <input type="number" id="cOrder" min="0" step="1" value="0" dir="ltr">
+        </label>
+
+        <p class="form-error" id="categoryError" role="alert" hidden></p>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-dark" id="categorySaveBtn">حفظ</button>
+          <button type="button" class="btn btn-outline" data-close="categoryModal">إلغاء</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== نافذة تفاصيل الطلب ========== -->
+  <div class="modal" id="orderModal" hidden>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="orderModalTitle">تفاصيل الطلب</h3>
+        <button type="button" class="modal-close" data-close="orderModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div id="orderModalBody"></div>
+    </div>
+  </div>
+
+  <!-- مكتبة قاعدة البيانات (Supabase) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
