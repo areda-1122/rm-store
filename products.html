@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المنتجات | R&M Store</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- شريط الإعلان العلوي -->
+  <div class="top-bar">
+    اطلبي الآن عبر واتساب
+  </div>
+
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="container header-inner">
+
+      <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+
+      <a href="index.html" class="logo-link" aria-label="R&M Store">
+        <img src="logo.png" alt="R&M Store" class="logo-img">
+      </a>
+
+      <div class="header-icons">
+        <a href="favorites.html" class="icon-btn" aria-label="المفضلة">
+          ♡
+          <span class="badge" id="favCount">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn" aria-label="السلة">
+          🛍
+          <span class="badge" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- مربع البحث -->
+    <div class="container search-wrap">
+      <form class="search-form" id="searchForm">
+        <input type="search" id="searchInput" placeholder="ابحثي عن منتج أو علامة تجارية..." autocomplete="off">
+        <button type="submit" class="search-btn">بحث</button>
+      </form>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- قائمة التنقل -->
+    <nav class="main-nav" id="mainNav">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="products.html?category=skin">العناية بالبشرة</a></li>
+          <li><a href="products.html?category=hair">العناية بالشعر</a></li>
+          <li><a href="products.html?category=makeup">المكياج</a></li>
+          <li><a href="products.html?category=personal">العناية الشخصية</a></li>
+          <li><a href="products.html?category=accessories">الإكسسوارات</a></li>
+          <li><a href="products.html?category=offers" class="nav-offers">العروض والخصومات</a></li>
+          <li><a href="index.html#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="page-head">
+          <h1 class="section-title" id="pageTitle">المنتجات</h1>
+          <p id="pageSubtitle"></p>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+          <p class="loading-text">جاري تحميل المنتجات...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <img src="logo.png" alt="R&M Store" class="footer-logo">
+        <p>متجر متخصص في مستحضرات التجميل والعناية والإكسسوارات.</p>
+      </div>
+      <div class="footer-col">
+        <h3>روابط سريعة</h3>
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="cart.html">السلة</a></li>
+          <li><a href="favorites.html">المفضلة</a></li>
+          <li><a href="index.html#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>بيانات المتجر</h3>
+        <ul>
+          <li>واتساب: <a href="https://wa.me/201010031279" target="_blank" rel="noopener" dir="ltr">01010031279</a></li>
+          <li>العملة: جنيه مصري</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>جميع الحقوق محفوظة © R&M Store</p>
+    </div>
+  </footer>
+
+  <!-- مكتبة قاعدة البيانات (Supabase) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+
+  <!-- ملفات المتجر -->
+  <script src="js/app.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/products-page.js"></script>
+</body>
+</html>
